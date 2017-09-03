@@ -2,7 +2,7 @@ import Data.DBContext
 import Data.Entites
 
 
-class BaseService():
+class BaseService:
     session = Data.DBContext.Session()
     _entity = object
 
@@ -19,3 +19,6 @@ class BaseService():
     def delete(self, entity):
         self.session.delete(entity)
         self.session.commit()
+
+    def get_entity(self):
+        return self._entity

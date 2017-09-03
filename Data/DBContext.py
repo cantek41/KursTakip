@@ -4,11 +4,9 @@ from sqlalchemy import create_engine
 from Data.BaseEntity import Base
 import Data.Entites
 
-import os
+from config import db_name
 
-basedir = os.path.realpath(os.path.abspath(os.path.dirname(__file__)) + '/../')
-
-engine = create_engine('sqlite:///' + os.path.join(basedir, 'dataBase.db'))
+engine = create_engine(db_name)
 Session = sessionmaker()
 Session.configure(bind=engine)
 
