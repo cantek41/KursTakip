@@ -3,19 +3,30 @@ import jwt
 from functools import wraps
 
 from flask_restful import Api
+from flask_cors import CORS, cross_origin
 
 from Data.Entites import User
 from config import SECRET_KEY
 
 from Api import Apies
 
+app = Flask(__name__)
+
 
 def create_app():
-    app = Flask(__name__)
     app.config['SECRET_KEY'] = SECRET_KEY
     api = Api(app)
+
     set_route(api)
     return app
+
+
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+    return response
 
 
 def set_route(api):
