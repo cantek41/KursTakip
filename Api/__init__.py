@@ -21,8 +21,27 @@ def create_app():
 def set_route(api):
     api.add_resource(Apies.TeacherApiList, '/teacher')
     api.add_resource(Apies.TeacherApi, '/teacher/<id>')
+
     api.add_resource(Apies.CourseApiList, '/course')
     api.add_resource(Apies.CourseApi, '/course/<id>')
+
+    api.add_resource(Apies.StudentApiList, '/student')
+    api.add_resource(Apies.StudentApi, '/student/<id>')
+
+    api.add_resource(Apies.CourseStudentApiList, '/course/student')
+    api.add_resource(Apies.CourseStudentApi, '/course/student/<id>')
+
+    api.add_resource(Apies.GradeApiList, '/grade')
+    api.add_resource(Apies.GradeApi, '/grade/<id>')
+
+    api.add_resource(Apies.RollCallApiList, '/course/rollcall')
+    api.add_resource(Apies.RollCallApi, '/course/rollcall/<id>')
+
+    api.add_resource(Apies.DocumentApiList, '/document')
+    api.add_resource(Apies.DocumentApi, '/document/<id>')
+
+    api.add_resource(Apies.CourseQuizApiList, '/course/quiz')
+    api.add_resource(Apies.CourseQuizApi, '/course/quiz/<id>')
 
 
 def token_required(f):

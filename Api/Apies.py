@@ -16,3 +16,51 @@ class CourseApi(BaseApi):
 
 class CourseApiList(BaseApiList):
     _service = Services.CourseService()
+
+
+class StudentApi(BaseApi):
+    _service = Services.StudentService()
+
+
+class StudentApiList(BaseApiList):
+    _service = Services.StudentService()
+
+
+class CourseStudentApi(BaseApi):
+    _service = Services.CourseStudentService()
+
+
+class CourseStudentApiList(BaseApiList):
+    _service = Services.CourseStudentService()
+
+
+class GradeApi(BaseApi):
+    _service = Services.GradeService()
+
+
+class GradeApiList(BaseApiList):
+    _service = Services.GradeService()
+
+
+class RollCallApi(BaseApi):
+    _service = Services.RollCallService()
+
+
+class RollCallApiList(BaseApiList):
+    _service = Services.RollCallService()
+
+
+class DocumentApi(BaseApi):
+    _service = Services.DocumentService()
+
+
+class DocumentApiList(BaseApiList):
+    _service = Services.DocumentService()
+
+
+class CourseQuizApi(BaseApi):
+    _service = Services.CourseQuizService()
+
+
+class CourseQuizApiList(BaseApiList):
+    _service = Services.CourseQuizService()

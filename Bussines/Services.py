@@ -1,10 +1,34 @@
-from Data.Entites import Course, Teacher
+from Data import Entites
 from Bussines.BaseService import BaseService
 
 
 class CourseService(BaseService):
-    _entity = Course
+    _entity = Entites.Course
 
 
 class TeacherService(BaseService):
-    _entity = Teacher
+    _entity = Entites.Teacher
+
+
+class StudentService(BaseService):
+    _entity = Entites.Student
+
+
+class CourseStudentService(BaseService):
+    _entity = Entites.CourseStudent
+
+
+class GradeService(BaseService):
+    _entity = Entites.Grade
+
+
+class RollCallService(BaseService):
+    _entity = Entites.RollCall
+
+
+class CourseQuizService(BaseService):
+    _entity = Entites.CourseQuiz
+
+
+class DocumentService(BaseService):
+    _entity = Entites.Document
