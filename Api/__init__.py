@@ -24,6 +24,7 @@ def set_route(api):
     api.add_resource(Apies.CourseApiList, '/course')
     api.add_resource(Apies.CourseApi, '/course/<id>')
 
+
 def token_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):

@@ -1,18 +1,18 @@
 from Api.BaseApi import BaseApi, BaseApiList
-from Bussines.CourceService import CourseService
+from Bussines import Services
 
 
 class TeacherApi(BaseApi):
-    _service = CourseService()
+    _service = Services.TeacherService()
 
 
 class TeacherApiList(BaseApiList):
-    _service = CourseService()
+    _service = Services.TeacherService()
 
 
 class CourseApi(BaseApi):
-    _service = CourseService()
+    _service = Services.CourseService()
 
 
 class CourseApiList(BaseApiList):
-    _service = CourseService()
+    _service = Services.CourseService()
