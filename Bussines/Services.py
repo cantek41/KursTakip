@@ -29,6 +29,10 @@ class RollCallService(BaseService):
 class CourseQuizService(BaseService):
     _entity = Entites.CourseQuiz
 
+    def get_by_course(self, course_id):
+        results = self.session.query(self._entity).filter_by(Course_id=course_id).all()
+        return results
+
 
 class DocumentService(BaseService):
     _entity = Entites.Document

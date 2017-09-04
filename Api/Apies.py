@@ -1,3 +1,5 @@
+from flask import jsonify
+
 from Api.BaseApi import BaseApi, BaseApiList
 from Bussines import Services
 
@@ -60,6 +62,13 @@ class DocumentApiList(BaseApiList):
 
 class CourseQuizApi(BaseApi):
     _service = Services.CourseQuizService()
+
+    def get(self, id):
+        results = self._service.get_by_course(id)
+        result = []
+        for c in results:
+            result.append(c.to_json())
+        return jsonify({"result": result})
 
 
 class CourseQuizApiList(BaseApiList):
