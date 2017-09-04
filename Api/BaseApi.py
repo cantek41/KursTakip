@@ -1,6 +1,5 @@
 from flask import request, jsonify
 from Bussines.BaseService import BaseService
-from Data.Entites import Course
 from flask_restful import Resource
 
 
