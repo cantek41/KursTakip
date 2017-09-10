@@ -13,8 +13,12 @@ class BaseService:
         return self.session.query(self._entity).filter_by(id=id).first()
 
     def add(self, entity):
-        self.session.add(entity)
-        self.session.commit()
+        try:
+            self.session.add(entity)
+            self.session.commit()
+        except Exception as ex:
+            print(ex)
+            self.session.rollback()
 
     def delete(self, entity):
         self.session.delete(entity)
