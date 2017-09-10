@@ -19,6 +19,15 @@ class CourseApi(BaseApi):
 class CourseApiList(BaseApiList):
     _service = Services.CourseService()
 
+    def get(self):
+        results = self._service.get_all()
+        result = []
+        for c in results:
+            if c.teacher:
+                c.teacher_id = c.teacher.name
+            result.append(c.to_json())
+        return jsonify({"result": result})
+
 
 class StudentApi(BaseApi):
     _service = Services.StudentService()

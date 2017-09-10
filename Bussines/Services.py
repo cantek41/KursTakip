@@ -6,6 +6,7 @@ class CourseService(BaseService):
     _entity = Entites.Course
 
 
+
 class TeacherService(BaseService):
     _entity = Entites.Teacher
 

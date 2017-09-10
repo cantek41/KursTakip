@@ -3,8 +3,6 @@ import jwt
 from functools import wraps
 
 from flask_restful import Api
-from flask_cors import CORS, cross_origin
-
 from Data.Entites import User
 from config import SECRET_KEY
 
