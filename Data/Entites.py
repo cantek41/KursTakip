@@ -17,6 +17,7 @@ class Course(BaseEntity):
     qouta = Column(SMALLINT)
     end_date = Column(Date)
     start_date = Column(Date)
+    limit = Column(Integer)
 
 
 class Teacher(BaseEntity):

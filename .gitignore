@@ -100,7 +100,6 @@ ENV/
 # mypy
 .mypy_cache/
 
-*.db
 .idea/KursTakip.iml
 .idea/misc.xml
 .idea/modules.xml
