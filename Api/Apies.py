@@ -23,9 +23,11 @@ class CourseApiList(BaseApiList):
         results = self._service.get_all()
         result = []
         for c in results:
+            temp = c.to_json()
+            temp["teacher"] = ""
             if c.teacher:
-                c.teacher_id = c.teacher.name
-            result.append(c.to_json())
+                temp["teacher"] = c.teacher.name
+            result.append(temp)
         return jsonify({"result": result})
 
 
