@@ -57,6 +57,7 @@ class RollCall(BaseEntity):
     Student = relationship("Student")
     Student_id = Column(Integer, ForeignKey('Student.id'))
     day_date = Column(Date)
+    hour = Column(Integer)
 
 
 class CourseQuiz(BaseEntity):
