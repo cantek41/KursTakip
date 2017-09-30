@@ -6,7 +6,6 @@ class CourseService(BaseService):
     _entity = Entites.Course
 
 
-
 class TeacherService(BaseService):
     _entity = Entites.Teacher
 
@@ -17,6 +16,10 @@ class StudentService(BaseService):
 
 class CourseStudentService(BaseService):
     _entity = Entites.CourseStudent
+
+    def get_by_course(self, course_id):
+        results = self.session.query(self._entity).filter_by(Course_id=course_id).all()
+        return results
 
 
 class GradeService(BaseService):
