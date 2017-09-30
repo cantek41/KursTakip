@@ -38,6 +38,8 @@ class StudentApi(BaseApi):
         result = self._service.get_by_identity(id)
         if result:
             return jsonify(result.to_json())
+        else:
+            return {}
 
 
 class StudentApiList(BaseApiList):
