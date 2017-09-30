@@ -13,6 +13,10 @@ class TeacherService(BaseService):
 class StudentService(BaseService):
     _entity = Entites.Student
 
+    def get_by_identity(self, identity):
+        results = self.session.query(self._entity).filter_by(identity=identity).first()
+        return results
+
 
 class CourseStudentService(BaseService):
     _entity = Entites.CourseStudent
