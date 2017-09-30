@@ -35,8 +35,9 @@ class StudentApi(BaseApi):
     _service = Services.StudentService()
 
     def get(self, id):
-        result = self._service.get_by_identity(id).to_json()
-        return jsonify(result)
+        result = self._service.get_by_identity(id)
+        if result:
+            return jsonify(result.to_json())
 
 
 class StudentApiList(BaseApiList):
