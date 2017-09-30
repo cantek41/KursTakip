@@ -85,7 +85,7 @@ class CourseQuizApi(BaseApi):
         results = self._service.get_by_course(id)
         result = []
         for c in results:
-            result.append(c.to_json())
+            result.append(c.Student.to_json())
         return jsonify({"result": result})
 
 
