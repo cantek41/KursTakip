@@ -1,7 +1,8 @@
-from flask import jsonify
+from flask import jsonify, request
 
 from Api.BaseApi import BaseApi, BaseApiList
 from Bussines import Services
+from Data import Entites
 
 
 class TeacherApi(BaseApi):
@@ -62,15 +63,6 @@ class CourseStudentApi(BaseApi):
 class CourseStudentApiList(BaseApiList):
     _service = Services.CourseStudentService()
 
-    def get(self, id):
-        results = self._service.get_by_course(id)
-        result = []
-        for c in results:
-            temp = c.Student.to_json()
-            temp["delete_id"] = c.id
-            result.append(temp)
-        return jsonify({"result": result})
-
 
 class GradeApi(BaseApi):
     _service = Services.GradeService()
@@ -94,6 +86,14 @@ class RollCallApi(BaseApi):
 
 class RollCallApiList(BaseApiList):
     _service = Services.RollCallService()
+
+    def post(self):
+        data = request.get_json()
+        print(data)
+        for item in data:
+            result = self._service.get_entity().from_json(item)
+            self.insert(result)
+        return jsonify({"result": "ok"})
 
 
 class DocumentApi(BaseApi):

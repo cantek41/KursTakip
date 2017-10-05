@@ -39,7 +39,6 @@ class BaseApiList(Resource):
         data = request.get_json()
         print(data)
         result = self._service.get_entity().from_json(data)
-
         self.insert(result)
         return jsonify(result.to_json())
 
