@@ -1,3 +1,5 @@
+from datetime import date
+
 from flask import request, jsonify
 from Bussines.BaseService import BaseService
 from flask_restful import Resource
@@ -35,6 +37,18 @@ class BaseApiList(Resource):
 
     def post(self):
         data = request.get_json()
+        print(data)
         result = self._service.get_entity().from_json(data)
+
+        for col in result.__table__.columns:
+            try:
+                print(col.name)
+                name = col.name
+                if "date" in name:
+                    d, m, y = getattr(result, name, "").split(".")
+                    print(d, m, y)
+                    setattr(result, name, date(int(y), int(m), int(d)))
+            except Exception as ex:
+                print(ex)
         self._service.add(result)
         return jsonify(result.to_json())

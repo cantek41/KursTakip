@@ -53,7 +53,9 @@ class CourseStudentApi(BaseApi):
         results = self._service.get_by_course(id)
         result = []
         for c in results:
-            result.append(c.Student.to_json())
+            temp = c.Student.to_json()
+            temp["delete_id"] = c.id
+            result.append(temp)
         return jsonify({"result": result})
 
 
@@ -71,6 +73,14 @@ class GradeApiList(BaseApiList):
 
 class RollCallApi(BaseApi):
     _service = Services.RollCallService()
+
+    def get(self, id):
+        results = self._service.get_by_course(id)
+        result = []
+        for c in results:
+            item = {"id": c.Student.id, "name": c.Student.name, "surname": c.Student.surname, "total": c.total}
+            result.append(item)
+        return jsonify({"result": result})
 
 
 class RollCallApiList(BaseApiList):

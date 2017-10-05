@@ -1,5 +1,6 @@
 from Data import Entites
 from Bussines.BaseService import BaseService
+from sqlalchemy.sql import func
 
 
 class CourseService(BaseService):
@@ -32,6 +33,16 @@ class GradeService(BaseService):
 
 class RollCallService(BaseService):
     _entity = Entites.RollCall
+
+    _courseEntity = Entites.CourseStudent
+
+    def get_by_course(self, course_id):
+        results = self.session.query(self._courseEntity).filter_by(Course_id=course_id).all()
+        for item in results:
+            item.total = self.session.query(self._entity, func.sum(self._entity.hour).label("score")).filter_by(
+                Course_id=course_id,
+                Student_id=item.Student_id).first().score
+        return results
 
 
 class CourseQuizService(BaseService):
