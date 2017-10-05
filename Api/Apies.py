@@ -62,6 +62,15 @@ class CourseStudentApi(BaseApi):
 class CourseStudentApiList(BaseApiList):
     _service = Services.CourseStudentService()
 
+    def get(self, id):
+        results = self._service.get_by_course(id)
+        result = []
+        for c in results:
+            temp = c.Student.to_json()
+            temp["delete_id"] = c.id
+            result.append(temp)
+        return jsonify({"result": result})
+
 
 class GradeApi(BaseApi):
     _service = Services.GradeService()

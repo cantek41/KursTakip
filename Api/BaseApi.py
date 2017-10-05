@@ -40,15 +40,18 @@ class BaseApiList(Resource):
         print(data)
         result = self._service.get_entity().from_json(data)
 
+        self.insert(result)
+        return jsonify(result.to_json())
+
+    def insert(self, result):
         for col in result.__table__.columns:
             try:
                 print(col.name)
                 name = col.name
                 if "date" in name:
-                    d, m, y = getattr(result, name, "").split(".")
+                    d, m, y = getattr(result, name, "").split("/")
                     print(d, m, y)
                     setattr(result, name, date(int(y), int(m), int(d)))
             except Exception as ex:
                 print(ex)
         self._service.add(result)
-        return jsonify(result.to_json())
